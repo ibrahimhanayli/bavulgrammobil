@@ -1,62 +1,32 @@
-import { StyleSheet,  View } from 'react-native';
-import { Text,Divider,Appbar,Button } from 'react-native-paper';
-import React,{useState} from 'react';
+import React, { useEffect } from 'react';
+import { NativeBaseProvider } from 'native-base';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator,TransitionPresets } from '@react-navigation/stack';
 
-//sayfalar
-import KayitPage from './views/kayitPage';
-import TeslimPage from './views/teslimPage';
-import TakipPage from './views/takipPage';
+//ekranlar
+import Anasayfa from './views/Anasayfa';
+import Siparis from './views/Siparis';
+import Takip from './views/Takip';
 
-function App() {
-  //sayfa aktiflik durumları
-  const [aktifekran,setAktifEkran] = useState(0);
+const Stack = createStackNavigator();
 
-
-
+export default function App() {
   return (
-    <>
-    <Appbar.Header >
-      <Appbar.Content style={{width:"100%",alignItems:"center"}} title="Bavulgram" />
-    </Appbar.Header>
-    <View style={styles.container}>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="anasayfa"
+        screenOptions={{
+          headerShown: false, 
+          gestureEnabled: false,
+          ...TransitionPresets.ModalTransition, 
+        }}>
+          <Stack.Screen name="anasayfa" component={Anasayfa} />
+          <Stack.Screen name="siparis" component={Siparis} />
+          <Stack.Screen name="takip" component={Takip} />
+        </Stack.Navigator>
 
-      <Text variant='headlineSmall'>Bavulgram olarak sizlere en iyi hizmeti sunmak için elimizden geleni yapıyoruz.</Text>
-
-      <Divider style={{marginTop:2,marginBottom:2}}/>
-
-      <Button style={{width:300}} mode="contained" onPress={()=>setAktifEkran(1)}>
-        Kayıt Oluştur
-      </Button>
-
-          <Divider />
-     
-      <Button style={{width:300}} mode="contained" onPress={()=>setAktifEkran(2)}>
-        Bavul Takip
-      </Button>
-
-          <Divider />
-
-      <Button style={{width:300}} mode="contained" onPress={()=>setAktifEkran(3)} >
-        Teslim
-      </Button>
-    
-      {aktifekran == 1 && <KayitPage/> }
-      {aktifekran == 3 && <TeslimPage/>}
-      {aktifekran == 2 && <TakipPage/> }
-    </View>
-
-
-    </>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
 
-export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    padding:5,
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-  }
-});

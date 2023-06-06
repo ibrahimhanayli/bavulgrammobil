@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "bavulgram",
-    "slug": "bavulgram",
+    "name": "LezzeSepeti",
+    "slug": "LezzeSepeti",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -10,9 +10,6 @@
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
       "**/*"
@@ -23,17 +20,18 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#ffffff"
       },
-      "package": "com.mbaysag.bavulgram"
+      "package": "com.ihanayli.LezzeSepeti"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "435fb903-b9bd-4d7d-93ee-e60ffd6b4683"
+        "projectId": "a29d23ed-0664-40d7-b541-eb739553041a"
       }
-    }
+    },
+    "owner": "ihanayli"
   }
 }
